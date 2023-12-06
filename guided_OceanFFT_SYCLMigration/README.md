@@ -1,6 +1,6 @@
 # `OceanFFT` Sample
 
-The `OceanFFT` sample simulates an Ocean heightfield using oneMKL FFT funtionality. It is implemented using SYCL by migrating code from original CUDA source code and offloading computations to a GPU or CPU.
+The `OceanFFT` sample simulates an Ocean heightfield using oneMKL FFT functionality. The original CUDA* source code is migrated to SYCL for portability across GPUs from multiple vendors.
 
 | Area                   | Description
 |:---                    |:---
@@ -12,7 +12,7 @@ The `OceanFFT` sample simulates an Ocean heightfield using oneMKL FFT funtionali
 
 ## Purpose
 
-OceanFFT is a simulation of ocean waves/heightfield using FFT. FFT transforms the data from the time/space domain to frequency and vice versa. Ocean is made of many waves all added together. The main principle of Ocean rendering is that it can be modelled as sum of infinite waves at different amplitudes travelling in different directions. 
+OceanFFT is a simulation of ocean waves/heightfields using FFT. FFT transforms the data from the time/space domain to frequency and vice versa. The ocean is made of many waves all added together. The main principle of Ocean rendering is that it can be modeled as sum of infinite waves at different amplitudes traveling in different directions. 
 
 The cuFFT library allows the floating-point power and parallelism of the GPU without having to develop a custom GPU-based FFT implementation. The equivalent lib on SYCL would be oneAPI Math Kernel Library where FFT function supports one, two, or three dimensions with mixed radices. The supported functions include complex-to-complex and real-to-complex transforms of arbitrary length in single-precision and double-precision. 
 
@@ -30,7 +30,7 @@ This sample contains two versions of the code in the following folders:
 | Optimized for         | Description
 |:---                   |:---
 | OS                    | Ubuntu* 22.04
-| Hardware              | Intel® Gen9 <br>Intel® Gen11 <br>Intel® Xeon CPU <br>Intel® Data Center GPU Max <br> Nvidia Testa P100 <br> Nvidia A100 <br> Nvidia H100 
+| Hardware              | Intel® Gen9 <br>Intel® Gen11 <br>Intel® Xeon CPU <br>Intel® Data Center GPU Max <br> Nvidia Tesla P100 <br> Nvidia A100 <br> Nvidia H100 
 | Software              | SYCLomatic (Tag - 20230720) <br> Intel® oneAPI Base Toolkit (Base Kit) version 2024.0 <br> oneAPI for NVIDIA GPU plugin from Codeplay (to run SYCL™ applications on NVIDIA® GPUs)
 
 For information on how to use SYCLomatic, refer to the materials at *[Migrate from CUDA* to C++ with SYCL*](https://www.intel.com/content/www/us/en/developer/tools/oneapi/training/migrate-from-cuda-to-cpp-with-sycl.html)*.<br> How to run SYCL™ applications on NVIDIA® GPUs, refer to 
@@ -38,10 +38,10 @@ For information on how to use SYCLomatic, refer to the materials at *[Migrate fr
 
 
 ## Key Implementation Details
-This sample demonstrates the migration of the following prominent CUDA feature:
+This sample demonstrates the migration of the following prominent CUDA features:
  - CUDA FFT API (CUFFT)
 
-OceanFFT sample demonstrates how to use FFT API to synthesize and render an ocean surface in real-time. SYCL oceanFFT generates wave heightfield at time based on initial heightfield and dispersion relationship. Then FFT API is executed in inverse order to convert to spatial domain. Finally, height map values and slope values are evaluated and compared with reference values to determine whether it is correct or wrong.
+OceanFFT sample demonstrates how to use FFT API to synthesize and render an ocean surface in real time. SYCL oceanFFT generates wave heightfield at the time based on initial heightfield and dispersion relationship. Then FFT API is executed in inverse order to convert to spatial domain. Finally, height map values and slope values are evaluated and compared with reference values to determine whether it is correct or wrong.
 
 >**Note**: Refer to [Workflow for a CUDA* to SYCL* Migration](https://www.intel.com/content/www/us/en/developer/tools/oneapi/training/cuda-sycl-migration-workflow.html) for general information about the migration workflow.
 ## CUDA source code evaluation
